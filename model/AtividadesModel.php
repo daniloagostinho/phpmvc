@@ -153,14 +153,10 @@ class AtividadeModel extends Atividades {
     public function updateAtividade($data,$idAtividade){
         $pdo = new DBConnection();
         $db = $pdo->DBConnect();
-        try {
-            var_dump($data);
-            //retira o action
-            array_pop($data);
-            //retira o action
-            array_pop($data);
-            //retira o id
-            //array_shift($data);
+        try { 
+            //retira o action e o id do array
+            array_pop($data); 
+            array_pop($data); 
             
             $query = "UPDATE ".$this->table." SET";
             $values = array();

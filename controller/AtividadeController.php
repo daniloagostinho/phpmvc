@@ -26,8 +26,7 @@ class AtividadeController{
     
     /**
      *
-     * @param $atividade_id para retornar um valor
-     * @return array atividades
+     * @return array de status
      */
     public function getlistStatus(){
         try {
@@ -73,7 +72,8 @@ class AtividadeController{
     
     /**
      * Atualiza uma atividade
-     * @param $data array do formulario
+     * @param $data array (dados do form passados via ajax)
+     * @param $atividade_id id da atividade a ser atualizada
      */
     public function updateAtividade($data,$atividade_id){
         try {
