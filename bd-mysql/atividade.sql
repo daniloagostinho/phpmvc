@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2017 at 11:46 PM
+-- Generation Time: Jun 08, 2017 at 11:56 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -35,6 +35,27 @@ CREATE TABLE `atividade` (
   `situacao` tinyint(4) NOT NULL
 ) ;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `status`
+--
+
+CREATE TABLE `status` (
+  `id` int(11) NOT NULL,
+  `status` varchar(255) DEFAULT NULL
+) ;
+
+--
+-- Dumping data for table `status`
+--
+
+INSERT INTO `status` (`id`, `status`) VALUES
+(1, 'Pendente'),
+(2, 'Em desenvolvimento'),
+(3, 'Em teste'),
+(4, 'Concluído');
+
 --
 -- Indexes for dumped tables
 --
@@ -47,6 +68,12 @@ ALTER TABLE `atividade`
   ADD KEY `status` (`status`);
 
 --
+-- Indexes for table `status`
+--
+ALTER TABLE `status`
+  ADD UNIQUE KEY `id` (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -54,6 +81,11 @@ ALTER TABLE `atividade`
 -- AUTO_INCREMENT for table `atividade`
 --
 ALTER TABLE `atividade`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `status`
+--
+ALTER TABLE `status`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables

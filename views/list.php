@@ -11,6 +11,7 @@
         
         $teste = new AtividadeController(); 
         $dados =  $teste->listToView();
+       
         ?>
     </head>
     <body>
@@ -42,7 +43,9 @@
                </thead>
                
                <tbody>
-               <?php foreach ($dados as $key => $dadoAtividade) :?>
+               <?php 
+               if (is_array($dados) || is_object($dados)):               
+               foreach ($dados as $key => $dadoAtividade) :?>
                <?php $checkStatus= ($dadoAtividade['status'] == 'Concluído')?true:false;?>                        
                 <tr <?php if($checkStatus): ?> style="background-color:#caf7cf;" <?php endif ?>>                
                 <td><input type="checkbox" class="checkthis" /></td> 
@@ -64,7 +67,9 @@
                 <td><p data-placement="top" data-toggle="tooltip" title="Deletar"><button <?php if($checkStatus): ?> disabled <?php endif; ?> class="btn btn-danger btn-xs btn-deletar" data-atividade-id="<?php echo $dadoAtividade['ID'];?>" data-title="Deletar" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
                 </tr>  
                 
-                <?php endforeach;?>                             
+                <?php endforeach;
+                    endif;
+                ?>                             
                </tbody>                
         	</table>
 
