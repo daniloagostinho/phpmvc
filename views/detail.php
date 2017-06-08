@@ -19,7 +19,7 @@
 	<div class="container">
 				<?php 
 				//verifica se é update e pega valores default
-			     if(isset($_GET['id'])){
+			     if(isset($_GET['id'])&&isset($_GET['action'])){
 				    $updatemode = $_GET['id'];
 				 }
 				 $tituloForm = "Cadastro";
@@ -32,9 +32,10 @@
     		     }
     		     //Verifica se é permitido o Update
     		     if(isset($updatemode)){
-    		         if($dadoAtividade['status']=="Concluído"){
+    		         if($dadoAtividade['status']=="Concluído" || $_GET['action']=="view"){
     		             $edicao = false; 
     		         }
+    		          
     		     }
 				
     		     ?>
@@ -47,7 +48,7 @@
 			<fieldset> 
 				<!-- Form Name -->			
 				 
-				<legend><?php echo $tituloForm;?> de atividades <?php isset($edicao)? print "<i>( Concluída, Somente Leitura )</i>" : null ?></legend>
+				<legend><?php echo $tituloForm;?> de atividades <?php isset($edicao)? print "<i>( Somente Leitura )</i>" : null ?></legend>
 		 
 				<!-- Text input-->
 				<div class="form-group">
