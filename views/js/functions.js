@@ -88,6 +88,16 @@ $(function(){
     		alert('Informe a data final!');
     		$(".datafinal").css('color',"#ff0000");
     	}
-    })
+    });
+    
+    $('.btn-filter').on('click', function () {
+        var $target = $(this).data('target');
+        if ($target != 'todos') {
+          $('.table tr').css('display', 'none');
+          $('.table tr[data-status="' + $target + '"]').fadeIn('slow');
+        } else {
+          $('.table tr').css('display', 'none').fadeIn('slow');
+        }
+      });
 
 });

@@ -27,6 +27,15 @@
         
         <div class="table-responsive">
         <input type="submit" class="btn btn-success criarnovo" value="&nbsp;Criar Novo&nbsp;" name="criar">
+        	<div class="pull-right">
+							<div class="btn-group">
+								<button type="button" class="btn btn-warning btn-filter" data-target="Pendente">Pendente</button>
+								<button type="button" class="btn btn-info btn-filter" data-target="Em desenvolvimento">Em Desenvolvimento</button>
+								<button type="button" class="btn btn-danger btn-filter" data-target="Em teste">Em teste</button>
+								<button type="button" class="btn btn-success  btn-filter" data-target="Concluído">Concluído</button>
+								<button type="button" class="btn btn-default btn-filter" data-target="todos">Todos</button>
+							</div>
+						</div>
             <table id="tblAtividades" class="table table-bordred table-striped">                   
                <thead>           
                	<th><input type="checkbox" id="checkall" /></th>
@@ -47,7 +56,8 @@
                if (is_array($dados) || is_object($dados)):               
                foreach ($dados as $key => $dadoAtividade) :?>
                <?php $checkStatus= ($dadoAtividade['status'] == 'Concluído')?true:false;?>                        
-                <tr <?php if($checkStatus): ?> style="background-color:#caf7cf;" <?php endif ?>>                
+                <tr <?php if($checkStatus): ?> style="background-color:#caf7cf;" <?php endif ?>
+                data-status="<?php echo $dadoAtividade['status']; ?>">                
                 <td><input type="checkbox" class="checkthis" /></td> 
                 <td><?php echo $dadoAtividade['ID'];?></td>
                 <td><?php echo $dadoAtividade['nome']; ?></td>
